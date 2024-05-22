@@ -3,7 +3,7 @@
 
         <div class="section-header">
             <h2></h2>
-            <p>Check Our <span>Yummy Menu</span></p>
+            <p>{{ title_menu|safe }}</p>
         </div>
 
         <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -33,7 +33,7 @@
                         <div class="row gy-5">
                             {% for dish in category %}
                                 <div class="col-lg-4 menu-item">
-                                    <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                                    <a href="{{ dish.photo.url}}" class="glightbox"><img src="{{ dish.photo.url}}" class="menu-img img-fluid" alt=""></a>
                                     <h4>{{ dish }}</h4>
                                     <p class="ingredients">
                                         {{ dish.ingredients }}
@@ -52,7 +52,7 @@
                         <div class="row gy-5">
                             {% for dish in category %}
                                 <div class="col-lg-4 menu-item">
-                                    <a href="assets/img/menu/menu-item-1.png" class="glightbox"><img src="assets/img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                                    <a href="{{ dish.photo.url }}" class="glightbox"><img src="{{ dish.photo.url}}" class="menu-img img-fluid" alt=""></a>
                                     <h4>{{ dish }}</h4>
                                     <p class="ingredients">
                                         {{ dish.ingredients }}
@@ -67,6 +67,5 @@
                 {% endif %}
             {% endfor %}
         </div>
-
     </div>
 </section>
