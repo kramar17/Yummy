@@ -76,3 +76,42 @@ class Reservation(models.Model):
         verbose_name = 'Бронювання'
         verbose_name_plural = 'Бронювання'
         ordering = ['-date_created']
+
+
+class EventsImage(models.Model):
+    name = models.CharField(max_length=255)
+    image = models.ImageField(upload_to='events/')
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(blank=True, null=True)
+    is_visible = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Фото івенту'
+        verbose_name_plural = 'Фото івентів'
+        ordering = ['name']
+
+
+class Staff(models.Model):
+    POSITION_CHOICES = [
+        ('kitchen', 'kitchen'),
+        ('bar', 'bar'),
+        ('waiter', 'waiter'),
+        ('manager', 'manager')
+    ]
+
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    position = models.CharField(max_length=10, choices=POSITION_CHOICES)
+    is_visible = models.BooleanField(default=True)
+    photo = models.ImageField(upload_to='staff/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Персонал'
+        verbose_name_plural = 'Персонал'
+        ordering = ['position']
